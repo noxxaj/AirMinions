@@ -1,0 +1,9 @@
+<h1>Minions</h1>
+
+<ul>
+  <% @minions.each do |minion| %>
+    <% if policy(Minion).show? %>
+      <li> <%= link_to minion.name, minion_path(minion) %> </li>
+    <% end %>
+  <% end %>
+</ul>
