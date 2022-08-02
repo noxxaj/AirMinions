@@ -10,3 +10,20 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+.search_input{
+  border-radius: 20px;
+}
+.icon_minion_flex {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   color: red
+}
