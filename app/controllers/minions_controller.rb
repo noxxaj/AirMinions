@@ -17,6 +17,10 @@ class MinionsController < ApplicationController
     authorize @minion
   end
 
+  def new
+    @minion = Minion.new
+  end
+
   private
 
   def set_minion
@@ -24,6 +28,6 @@ class MinionsController < ApplicationController
   end
 
   def minion_params
-    params.require(:minion).permit(:name, :skills)
+    params.require(:minion, :user_id).permit(:name, :skills, :price_per_day)
   end
 end
