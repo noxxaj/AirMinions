@@ -1,0 +1,14 @@
+.btn-blue {
+  display: inline-block;
+  background-color: $blue;
+  color: white;
+  padding: .8em 2em;
+  text-decoration: none;
+  border-radius: 1.8em;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}
+
+.btn-blue:hover {
+  background-color: #075f9a;
+  color: white;
+}
