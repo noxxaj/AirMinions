@@ -10,16 +10,17 @@
       </span>
     </li>
     <li>
-    <form action="" class="form_flex">
-      <input class='search_input' type="text" placeholder='what do you look for?'>
+    <form action="search" class="form_flex">
+      <input class='search_input' name="name" type="text" placeholder='what do you look for?'>
       <button><i class="fas fa-search"></i></button>
     </form>
     </li>
     <% if user_signed_in? %>
-      <li>host a minion</li>
+      <li> <div class="icon_minion_flex"> <%= link_to "host a minion", new_minion_path %> <div><%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %> </div></div></li>
+
   </ul>
     <% else %>
-    <li><%= link_to "sign in" %> or <%= link_to "sign up" %></li>
+    <li><%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %></li>
     <% end %>
 </nav>
 

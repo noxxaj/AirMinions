@@ -15,6 +15,12 @@ class MinionsController < ApplicationController
     authorize @minion
   end
 
+  def search
+    @wanted_minion = Minion.where(name: params[:name]).first
+    redirect_to minion_path(@wanted_minion)
+    authorize @wanted_minion
+  end
+
   def show
     authorize @minion
   end
