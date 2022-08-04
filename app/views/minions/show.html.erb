@@ -1,2 +1,19 @@
-<h1>Minion: <b><%= @minion.name %></b></h1>
-<p>skills: <b><%= @minion.skills %></b></p>
+<div class="container">
+  <h1>Hello from <b><%= @minion.name %></b>!</h1>
+  <p><i class="fa-solid fa-star"></i> <span>(5.0) Review</span> - Skills: <b><%= @minion.skills %></b></p>
+  <div class="images-container">
+    <img src="<%= @minion.photo %>" alt="Minion photo">
+    <img src="https://i.pinimg.com/564x/b3/e5/1a/b3e51aee0d7bd73ede6e0bd5c02b0b6f.jpg" alt="Minion photo">
+    <img src="https://i.pinimg.com/564x/ba/6c/41/ba6c4136152a6385e9693f2062704ec6.jpg" alt="Minion photo">
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <h2>Know more about<b><%= @minion.name %></b>!</h2>
+      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+    </div>
+    <div class="col-4">
+    form
+    </div>
+  </div>
+
+</div>
