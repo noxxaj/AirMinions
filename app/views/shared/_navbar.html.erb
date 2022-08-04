@@ -9,10 +9,16 @@
     </li>
     <li>
     <form action="">
-      <input class='search_input' type="text" placeholder='what do you need?'>
+      <input class='search_input' type="text" placeholder='what do you need? '>
     </form>
     </li>
+    <% if user_signed_in? %>
+    <li>
+     host a minion
+    </li>
+    <% else %>
     <li>sign in or sign up</li>
+    <% end %>
   </ul>
 </nav>
 
