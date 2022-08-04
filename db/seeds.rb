@@ -21,7 +21,7 @@ user = User.create!(username: "fake_user123", email: "fake@gmail.com", password:
     skills: Faker::Games::Heroes.specialty,
     user_id: user.id,
     price_per_day: rand(150..10_000),
-    photo: ['https://static.wikia.nocookie.net/despicableme/images/8/88/Carl_the_minion.jpg/revision/latest?cb=20130917134115', 'https://static.wikia.nocookie.net/despicableme/images/8/88/Tall.jpg/revision/latest/scale-to-width-down/185?cb=20220602225228'].sample
+    photo: 'https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'
   )
   puts "Minion #{minion.id} created ✅"
 end
