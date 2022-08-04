@@ -1,0 +1,9 @@
+<h1>bookings</h1>
+
+<ul>
+  <% @bookings.each do |booking| %>
+    <% if policy(Booking).show? %>
+      <li> <%= link_to booking.start_date.to_s, booking_path(booking) %> </li>
+    <% end %>
+  <% end %>
+</ul>

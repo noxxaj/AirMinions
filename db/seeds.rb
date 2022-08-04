@@ -25,3 +25,13 @@ user = User.create!(username: "fake_user123", email: "fake@gmail.com", password:
   )
   puts "Minion #{minion.id} created ✅"
 end
+
+3.times do
+  booking = Booking.create!(
+    start_date: Faker::Date.between(from: '2022-01-01', to: '2022-03-01'),
+    end_date: Faker::Date.between(from: '2022-03-02', to: '2022-07-01'),
+    user_id: User.first.id,
+    minion_id: (Minion.first.id..Minion.last.id).to_a.sample
+  )
+  puts "Booking #{booking.id} created ✅"
+end
