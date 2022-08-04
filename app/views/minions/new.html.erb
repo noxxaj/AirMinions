@@ -1,0 +1,9 @@
+<h1>Add a minion</h1>
+<p><%= current_user.username %></p>
+<%= simple_form_for @minion do  |t| %>
+  <%= t.input :name %>
+  <%= t.input :description %>
+  <%= t.input :skills %>
+  <%= t.input :price_per_day %>
+  <%= t.submit "Create a minion", class: 'btn btn-primary' %>
+<% end %>

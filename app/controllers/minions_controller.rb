@@ -6,11 +6,13 @@ class MinionsController < ApplicationController
 
   def create
     @minion = Minion.new(minion_params)
+    @minion.user_id = current_user.id
     if @minion.save
       redirect_to minions_path
     else
       render :new
     end
+    authorize @minion
   end
 
   def show
@@ -19,6 +21,7 @@ class MinionsController < ApplicationController
 
   def new
     @minion = Minion.new
+    authorize @minion
   end
 
   private
@@ -28,6 +31,6 @@ class MinionsController < ApplicationController
   end
 
   def minion_params
-    params.require(:minion, :user_id).permit(:name, :skills, :price_per_day)
+    params.require(:minion).permit(:name, :description, :skills, :price_per_day, :user_id)
   end
 end
