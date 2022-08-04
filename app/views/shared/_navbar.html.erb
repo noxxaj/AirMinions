@@ -10,20 +10,16 @@
       </span>
     </li>
     <li>
-    <form action="">
-      <input class='search_input' type="text" placeholder='what do you need? '>
+    <form action="" class="form_flex">
+      <input class='search_input' type="text" placeholder='what do you look for?'>
+      <button><i class="fas fa-search"></i></button>
     </form>
     </li>
     <% if user_signed_in? %>
-    <li>
-     host a minion
-    </li>
-    <% else %>
-    <li>sign in or sign up</li>
-    <% end %>
+      <li>host a minion</li>
   </ul>
     <% else %>
-    <li>sign in  sign up</li>
+    <li><%= link_to "sign in" %> or <%= link_to "sign up" %></li>
     <% end %>
 </nav>
 
