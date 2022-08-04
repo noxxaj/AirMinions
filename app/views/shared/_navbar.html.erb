@@ -1,9 +1,11 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
 <div class="container">
 <nav>
   <ul>
     <li>
       <span class="icon_minion_flex">
-        <%= image_tag "minion.png", width: 70 %>
+        <%= image_tag "minion.png", width: 40 %>
         <span>Airminions</span>
       </span>
     </li>
@@ -20,6 +22,9 @@
     <li>sign in or sign up</li>
     <% end %>
   </ul>
+    <% else %>
+    <li>sign in  sign up</li>
+    <% end %>
 </nav>
 
 </div>
