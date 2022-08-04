@@ -8,6 +8,7 @@
 require 'faker'
 
 puts 'Cleaning database 🧹'
+Booking.destroy_all
 Minion.destroy_all
 User.destroy_all
 puts 'Database clean ✨'
