@@ -26,7 +26,11 @@ button{
   border: none;
   position: absolute;
   right: 5%;
-  background-color: white;
+  background-color: #0A75BC;
+  border-radius: 50%;
+}
+.fas{
+  color: white;
 }
 form {
   position: relative;
@@ -48,5 +52,4 @@ ul {
    display: flex;
    align-items: center;
    justify-content: center;
-   color: rgb(202, 142, 30)
 }
