@@ -26,7 +26,8 @@ user = User.create!(username: "fake_user123", email: "fake@gmail.com", password:
             'https://static.wikia.nocookie.net/despicableme/images/e/ea/Short_plum.webp/revision/latest/scale-to-width-down/185?cb=20220602230937',
             'https://static.wikia.nocookie.net/despicableme/images/4/47/MTROG_Stuart.png/revision/latest/scale-to-width-down/185?cb=20220101205245',
             'https://static.wikia.nocookie.net/despicableme/images/d/d2/DM3_Dave_selfie.jpg/revision/latest/scale-to-width-down/185?cb=20170711184405',
-            'https://static.wikia.nocookie.net/despicableme/images/8/88/Tall.jpg/revision/latest/scale-to-width-down/185?cb=20220602225228'].sample
+            'https://static.wikia.nocookie.net/despicableme/images/8/88/Tall.jpg/revision/latest/scale-to-width-down/185?cb=20220602225228',
+            'https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'].sample
   )
   puts "Minion #{minion.id} created ✅"
 end
