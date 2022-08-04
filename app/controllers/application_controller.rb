@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!, only: :new
+  before_action :authenticate_user!, only: %i[new]
   include Pundit
 
   # Pundit: white-list approach.
