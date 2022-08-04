@@ -1,19 +1,26 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
+
 <div class="container">
 <nav>
   <ul>
     <li>
       <span class="icon_minion_flex">
-        <%= image_tag "minion.png", width: 70 %>
+        <%= image_tag "minion.png", width: 40 %>
         <span>Airminions</span>
       </span>
     </li>
     <li>
-    <form action="">
-      <input class='search_input' type="text" placeholder='what do you need?'>
+    <form action="" class="form_flex">
+      <input class='search_input' type="text" placeholder='what do you look for?'>
+      <button><i class="fas fa-search"></i></button>
     </form>
     </li>
-    <li>sign in or sign up</li>
+    <% if user_signed_in? %>
+      <li>host a minion</li>
   </ul>
+    <% else %>
+    <li>sign in or sign up</li>
+    <% end %>
 </nav>
 
 </div>

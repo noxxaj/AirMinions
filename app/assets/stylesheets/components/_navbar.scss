@@ -1,3 +1,4 @@
+$shadow-lg: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
@@ -11,6 +12,25 @@
   width: 40px;
 }
 
+.form_flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav{
+  margin: 50px 0px;
+}
+
+button{
+  border: none;
+  position: absolute;
+  right: 5%;
+  background-color: white;
+}
+form {
+  position: relative;
+}
 ul {
   display: flex;
   flex-direction: row;
@@ -19,11 +39,14 @@ ul {
   list-style: none;
 }
 .search_input{
+  padding: 8px 12px;
   border-radius: 20px;
+  box-shadow: $shadow-lg;
+  border: none;
 }
 .icon_minion_flex {
    display: flex;
    align-items: center;
    justify-content: center;
-   color: red
+   color: rgb(202, 142, 30)
 }
