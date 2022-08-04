@@ -1,7 +1,7 @@
 class MinionsController < ApplicationController
   before_action :set_minion, only: %i[show]
   def index
-    @minions = policy_scope(Minion).order(created_at: :desc)
+    @minions = policy_scope(Minion).order(created_at: :asc)
   end
 
   def create
