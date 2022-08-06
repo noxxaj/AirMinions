@@ -3,6 +3,15 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!, only: %i[index show create]
   def index
     @bookings = policy_scope(Booking.where("user_id = #{current_user.id}").order(created_at: :asc))
+
+    @owned_minions = policy_scope(Minion.where("user_id = #{current_user.id}"))
+
+    @hosted_bookings = @owned_minions.map do |owned_minion|
+      Booking.where("minion_id = #{owned_minion.id}")
+    end
+    @hosted_bookings.flatten!
+    # bookings containing a minion which you (the user) host
+    # find bookings where
   end
 
   def show
@@ -24,6 +33,17 @@ class BookingsController < ApplicationController
       render :new
     end
     authorize @booking
+  end
+
+  def edit
+    # bookings that the user hosts
+    @bookings = Booking.where("user_id = #{current_user.id}").order(created_at: :asc)
+    # bookings the user(host) is related to
+
+  end
+
+  def update
+
   end
 
   private

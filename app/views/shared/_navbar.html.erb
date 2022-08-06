@@ -5,13 +5,13 @@
   <ul>
     <li>
       <span class="icon_minion_flex">
-        <%= image_tag "minion.png", width: 40 %>
+        <a href="/"><%= image_tag "minion.png", width: 40 %></a>
         <span>Airminions</span>
       </span>
     </li>
     <li>
     <form action="search" class="form_flex">
-      <input class='search_input' name="name" type="text" placeholder='what do you look for?'>
+      <input class='search_input' name="name" type="text" placeholder='what are you looking for?'>
       <button><i class="fas fa-search"></i></button>
     </form>
     </li>
@@ -19,7 +19,8 @@
       <li>
         <div class="sign_in_nav">
         <%= link_to "Log out",  destroy_user_session_path, method:  :delete%>
-        <%= link_to "host a minion", new_minion_path %>
+        <%= link_to "Host a minion", new_minion_path %>
+        <%= link_to "My Bookings", bookings_path %>
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
         </div>
       </li>
