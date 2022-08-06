@@ -23,7 +23,8 @@ User.create!(username: "minion_overlord", email: "notreal@gmail.com", password: 
     skills: Faker::Games::Heroes.specialty,
     user_id: User.first.id,
     price_per_day: rand(150..10_000),
-    photo: 'https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'
+    photo: 'https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg',
+    address: Faker::Address.street_address
   )
   puts "Minion #{minion.id} created ✅"
 end
