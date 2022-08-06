@@ -1,11 +1,28 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show]
-  before_action :authenticate_user!, only: %i[index show]
+  before_action :authenticate_user!, only: %i[index show create]
   def index
     @bookings = policy_scope(Booking.where("user_id = #{current_user.id}").order(created_at: :asc))
   end
 
   def show
+    authorize @booking
+  end
+
+  def new
+    @booking = Booking.new
+    authorize @booking
+  end
+
+  def create
+    @booking = Booking.new(booking_params)
+    @booking.user_id = current_user.id
+    @booking.minion_id = @booking.minion.id
+    if @booking.save
+      redirect_to bookings_path
+    else
+      render :new
+    end
     authorize @booking
   end
 
