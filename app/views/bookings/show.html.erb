@@ -1,5 +1,13 @@
 <h1><%=@booking.start_date%> to <%=@booking.end_date%></h1>
 <p>status: <b><%=@booking.status%></b></p>
-<p>hosted by: <b><%=@booking.user.username%></b></p>
+<p>Owner: <b><%= @booking.minion.user.username %></b></p>
+<% if @booking.minion.user_id == current_user.id %>
+  <p>requested by: <b><%=@booking.user.username%></b></p>
+  <%= link_to "Decline", "#", class: "btn-red" %>
+  <%# add paths later %>
+  <%= link_to "Accept", "#", class: "btn-blue" %>
+<% else %>
+  <p>hosted by: <b><%=@booking.user.username%></b></p>
+<% end %>
 <p>minion: <b><%=@booking.minion.name%></b></p>
 <img src=<%=@booking.minion.photo%>
