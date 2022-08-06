@@ -30,7 +30,9 @@ class MinionsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
     authorize @minion
+    authorize @booking
   end
 
   def new
