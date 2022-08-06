@@ -47,6 +47,6 @@ class MinionsController < ApplicationController
   end
 
   def minion_params
-    params.require(:minion).permit(:name, :description, :skills, :price_per_day, :user_id, :photo)
+    params.require(:minion).permit(:name, :description, :skills, :price_per_day, :user_id, :photo, :address)
   end
 end
