@@ -7,5 +7,4 @@ Rails.application.routes.draw do
   get "search", to: "minions#search"
 
   resources :bookings
-
 end
