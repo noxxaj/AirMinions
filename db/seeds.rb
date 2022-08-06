@@ -23,7 +23,7 @@ user = User.create!(username: "fake_user123", email: "fake@gmail.com", password:
     user_id: user.id,
     price_per_day: rand(150..10_000),
     photo: 'https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg',
-    address: '16 Villa Gaudelet, Paris'
+    address: Faker::Address.street_address
   )
   puts "Minion #{minion.id} created ✅"
 end
