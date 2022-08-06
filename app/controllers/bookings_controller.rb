@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show]
+  before_action :set_booking, only: %i[show update]
   before_action :authenticate_user!, only: %i[index show create]
   def index
     @bookings = policy_scope(Booking.where("user_id = #{current_user.id}").order(created_at: :asc))
@@ -35,15 +35,10 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
-  def edit
-    # bookings that the user hosts
-    @bookings = Booking.where("user_id = #{current_user.id}").order(created_at: :asc)
-    # bookings the user(host) is related to
-
-  end
-
   def update
-
+    @booking.update(booking_params)
+    redirect_to booking_path(@booking)
+    authorize @booking
   end
 
   private
