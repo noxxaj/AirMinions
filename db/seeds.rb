@@ -13,14 +13,15 @@ Minion.destroy_all
 User.destroy_all
 puts 'Database clean ✨'
 
-user = User.create!(username: "fake_user123", email: "fake@gmail.com", password: "iloveminions")
+User.create!(username: "fake_user123", email: "fake@gmail.com", password: "iloveminions")
+User.create!(username: "minion_overlord", email: "notreal@gmail.com", password: "minionlover123")
 
 25.times do
   minion = Minion.create!(
     name: ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'ken', 'Lance', 'Larry', 'Mark', 'Mike',
            'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'mel', 'Jorge', 'Donny'].sample,
     skills: Faker::Games::Heroes.specialty,
-    user_id: user.id,
+    user_id: User.first.id,
     price_per_day: rand(150..10_000),
     photo: 'https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg',
     address: Faker::Address.street_address
@@ -32,7 +33,7 @@ end
   booking = Booking.create!(
     start_date: Faker::Date.between(from: '2022-01-01', to: '2022-03-01'),
     end_date: Faker::Date.between(from: '2022-03-02', to: '2022-07-01'),
-    user_id: User.first.id,
+    user_id: User.last.id,
     minion_id: (Minion.first.id..Minion.last.id).to_a.sample
   )
   puts "Booking #{booking.id} created ✅"
