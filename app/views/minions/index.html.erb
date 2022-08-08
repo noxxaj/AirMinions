@@ -11,7 +11,7 @@
         <% @minions.each do |minion| %>
           <% if policy(Minion).show? %>
           <div class="card">
-              <img src='<%= minion.photo %>' alt="minion image">
+              <% cl_image_tag minion.photo.key, height: 100, width: 100, crop: :fill %>
               <div class="card_text-container">
                 <div class="d-flex justify-content-between">
                   <p><strong><%= minion.name %></strong></p>
