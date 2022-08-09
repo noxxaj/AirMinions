@@ -5,6 +5,6 @@ Rails.application.routes.draw do
   resources :minions
 
   get "search", to: "minions#search"
-
+  resources :users, only: [:show]
   resources :bookings
 end
