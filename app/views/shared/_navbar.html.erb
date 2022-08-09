@@ -18,7 +18,7 @@
     <% if user_signed_in? %>
       <li>
         <div class="sign_in_nav">
-        <%= link_to "Log out",  destroy_user_session_path, method:  :delete%>
+        <%= link_to "Log out",  destroy_user_session_path, method: :delete%>
         <%= link_to "Host a minion", new_minion_path %>
         <%= link_to "My Bookings", bookings_path %>
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>

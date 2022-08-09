@@ -1,5 +1,6 @@
 class MinionsController < ApplicationController
-  before_action :set_minion, only: %i[show]
+  before_action :set_minion, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[edit update create]
   def index
     @minions = policy_scope(Minion).order(created_at: :asc)
     @markers = @minions.geocoded.map do |minion|
@@ -33,6 +34,22 @@ class MinionsController < ApplicationController
     @booking = Booking.new
     authorize @minion
     authorize @booking
+  end
+
+  def update
+    @minion.update(minion_params)
+    redirect_to minion_path(@minion)
+    authorize @minion
+  end
+
+  def edit
+    authorize @minion
+  end
+
+  def destroy
+    @minion.destroy
+    redirect_to minions_path
+    authorize @minion
   end
 
   def new
