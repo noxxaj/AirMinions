@@ -28,6 +28,7 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><%= link_to "Host a minion", new_minion_path, class: "dropdown-item" %></li>
             <li><%= link_to "My Bookings", bookings_path, class: "dropdown-item"%></li>
+            <li><%= link_to "profile", user_path(current_user.id), class: "dropdown-item"%></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
           </ul>
