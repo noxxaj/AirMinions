@@ -22,13 +22,14 @@
         <p><%= @minion.description %></p>
       <% end %>
     </div>
-    <%# <div class="col-4"> %>
-      <%# <%= simple_form_for [@minion, @booking] do  |t| %> %>
-        <%# <%= t.input :start_date, as: :date %> %>
-        <%# <%= t.input :end_date, as: :date%> %>
-        <%# <%= t.submit "Book now", class: 'btn btn-primary' %> %>
-      <%# <% end %> %>
-    <%# </div> %>
+    <div class="col-4">
+      <%= simple_form_for @booking do  |t| %>
+        <%= t.input :minion_id, :as => :hidden, :input_html => { :value => @minion.id } %>
+        <%= t.input :start_date, as: :date %>
+        <%= t.input :end_date, as: :date%>
+        <%= t.submit "Book now", class: 'btn btn-primary' %>
+      <% end %>
+    </div>
   </div>
 
 </div>

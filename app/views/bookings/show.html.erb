@@ -3,17 +3,16 @@
 <p>Owner: <b><%= @booking.minion.user.username %></b></p>
 <% if @booking.minion.user_id == current_user.id && @booking.status === 'pending' %>
   <p>requested by: <b><%=@booking.user.username%></b></p>
+    <%= simple_form_for @booking do  |t| %>
+      <%# <%= t.input :status, value: "Decline" %>
+      <%= t.input :status, input_html: {value: 'Decline', class: 'd-none'}, label: false %>
+      <%= t.submit "Decline", class: "btn btn-red" %>
+    <% end %>
 
-  <%= simple_form_for @booking do  |t| %>
-    <%# <%= t.input :status, value: "Decline" %>
-    <%= t.input :status, input_html: {value: 'Decline', class: 'd-none'}, label: false %>
-    <%= t.submit "Decline", class: "btn btn-red" %>
-  <% end %>
-
-  <%= simple_form_for @booking do  |t| %>
-    <%= t.input :status, input_html: {value: 'Accept', class: 'd-none'}, label: false %>
-    <%= t.submit "Accept", class: "btn btn-blue" %>
-  <% end %>
+    <%= simple_form_for @booking do  |t| %>
+      <%= t.input :status, input_html: {value: 'Accept', class: 'd-none'}, label: false %>
+      <%= t.submit "Accept", class: "btn btn-blue" %>
+    <% end %>
 
 <% else %>
   <p>hosted by: <b><%=@booking.user.username%></b></p>

@@ -24,10 +24,11 @@ class BookingsController < ApplicationController
   end
 
   def create
+    minion = Minion.find(params[:booking][:minion_id])
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
-    @booking.minion_id = @booking.minion.id
-    if @booking.save
+    @booking.minion = minion
+    if @booking.save!
       redirect_to bookings_path
     else
       render :new
