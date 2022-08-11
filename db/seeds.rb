@@ -16,21 +16,40 @@ puts 'Database clean ✨'
 
 User.create!(username: "fake_user123", email: "fake@gmail.com", password: "iloveminions")
 User.create!(username: "minion_overlord", email: "notreal@gmail.com", password: "minionlover123")
-file = URI.open('https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg')
-# urls = ['https://res.cloudinary.com/dqlkgz11b/image/upload/v1660067758/development/ab6761610000e5eb35f91df1e1a8703f27132550_a4qx4t.jpg', 'https://res.cloudinary.com/dqlkgz11b/image/upload/v1660067725/development/Prison-Minion-with-Bananas-cardboard-cutout-buy-now-at-Starsills__48033_f7qlmg.jpg', 'https://res.cloudinary.com/dqlkgz11b/image/upload/v1660067644/development/5gx7jmdxd8bq68mu67tsne8qe7kh.jpg']
 
-minion = Minion.new(
-  name: ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'ken', 'Lance', 'Larry', 'Mark', 'Mike',
-         'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'mel', 'Jorge', 'Donny'].sample,
-  skills: Faker::Games::Heroes.specialty,
-  user_id: User.first.id,
-  price_per_day: rand(150..10_000),
-  address: Faker::Address.street_address
-)
-minion.photo.attach(io: file, filename: 'minion image', content_type: 'image/jpeg')
-minion.save!
+names = ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'Ken', 'Lance', 'Larry', 'Mark', 'Mike',
+  'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'Mel', 'Jorge', 'Donny']
+addresses = ['Piccadilly Circus', '11 Wall Street New York, NY', '221 B Baker St, London, England', 'Tour Eiffel Champ de Mars, Paris', 'Buckingham Palace, London, England']
 
-puts "Minion #{minion.id} created ✅"
+names.each do |name|
+  minion = Minion.new(
+    name: name,
+    skills: Faker::Games::Heroes.specialty,
+    user_id: User.first.id,
+    price_per_day: rand(150..10_000),
+    address: 'Piccadilly Circus'
+  )
+  file = URI.open("https://res.cloudinary.com/dqlkgz11b/image/upload/v1660241501/minions/#{name}.png")
+  minion.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
+  minion.save!
+  puts "Minion #{minion.name} created ✅"
+end
+
+# file_2 = URI.open('https://cdn11.bigcommerce.com/s-ydriczk/images/stencil/1280x1280/products/88251/90865/Prison-Minion-with-Bananas-cardboard-cutout-buy-now-at-Starsills__48033.1497885770.jpg')
+
+# minion_two = Minion.new(
+#   name: ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'ken', 'Lance', 'Larry', 'Mark', 'Mike',
+#         'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'mel', 'Jorge', 'Donny'].sample,
+#   skills: Faker::Games::Heroes.specialty,
+#   user_id: User.first.id,
+#   price_per_day: rand(150..10_000),
+#   address: Faker::Address.street_address
+# )
+# minion_two.photo.attach(io: file_2, filename: 'nes_2.png', content_type: 'image/png')
+# minion_two.save!
+# puts "Minion #{minion.id} created ✅"
+
+
 
 # 5.times do
 #   minion = Minion.new(

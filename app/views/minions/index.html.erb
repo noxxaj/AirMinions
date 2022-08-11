@@ -11,10 +11,10 @@
         <% @minions.each do |minion| %>
           <% if policy(Minion).show? %>
           <div class="card">
-              <%# <% if minion.photo.attached?  %>
+              <% if minion.photo.attached?  %>
                 <img src="<%= cl_image_path minion.photo.key %>" alt="">
-               <%# <% else %>
-                <%# <img src='https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'  alt="">
+               <% else %>
+                <img src='https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'  alt="">
                <% end %>
               <div class="card_text-container">
                 <div class="d-flex justify-content-between">
