@@ -1,8 +1,18 @@
 class MinionsController < ApplicationController
   before_action :set_minion, only: %i[show edit update destroy]
   before_action :authenticate_user!, only: %i[edit update create]
+
   def index
-    @minions = policy_scope(Minion).order(created_at: :asc)
+    if params[:name].present?
+      sql_query = " \
+        minions.name @@ :name \
+        OR minions.skills @@ :name \
+      "
+      # @minions = Minion.where(sql_query, query: "%#{params[:query]}%")
+      @minions = policy_scope(Minion.where(sql_query, name: "%#{params[:name]}%")).order(created_at: :asc)
+    else
+      @minions = policy_scope(Minion).order(created_at: :asc)
+    end
     @markers = @minions.geocoded.map do |minion|
       {
         lat: minion.latitude,
@@ -22,14 +32,6 @@ class MinionsController < ApplicationController
       render :new
     end
     authorize @minion
-  end
-
-  def search
-    @sql_query = "minions.name @@ :query"
-    @wanted_minion = Minion.where(@sql_query, query: "%#{params[:query]}%")
-    # @wanted_minion = Minion.where(name: params[:name]).first
-    redirect_to minion_path(@wanted_minion)
-    authorize @wanted_minion
   end
 
   def show
@@ -62,8 +64,7 @@ class MinionsController < ApplicationController
   private
 
   def set_minion
-    @sql_query = "minions.name @@ :query"
-    @minion = Minion.where(@sql_query, query: "%#{params[:query]}%")
+    @minion = Minion.find(params[:id])
   end
 
   def minion_params
