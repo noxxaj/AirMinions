@@ -1,0 +1,21 @@
+.footer-container {
+  display: flex;
+  background-color: $blue;
+  padding: 30px 300px;
+  align-items: center;
+}
+
+.footer-container .socials {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.footer-container .socials i {
+  color: $light-gray;
+}
+
+.footer-container .socials i:hover {
+  color: rgb(180, 180, 180);
+}

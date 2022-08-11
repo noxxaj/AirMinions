@@ -2,7 +2,14 @@
   <h1>Hello from <b><%= @minion.name %></b>!</h1>
   <p><i class="fa-solid fa-star"></i> <span>(5.0) Review</span> - Skills: <b><%= @minion.skills %></b></p>
   <p>Owner: <b><%= @minion.user.username %></b></p>
-
+  <div>
+  <% if current_user != nil %>
+  <% if @minion.user_id === current_user.id %>
+    <%= link_to 'Edit', edit_minion_path, class: 'btn-blue'%>
+    <%= link_to 'Delete', minion_path(@minion), method: :delete, class: 'btn-red'%>
+  <% end %>
+  <% end %>
+  </div>
   <div class="images-container">
     <img src="<%= @minion.photo %>" alt="Minion photo">
     <img src="https://i.pinimg.com/564x/b3/e5/1a/b3e51aee0d7bd73ede6e0bd5c02b0b6f.jpg" alt="Minion photo">
@@ -11,10 +18,19 @@
   <div class="row">
     <div class="col-8">
       <h2>Know more about <b><%= @minion.name %></b>!</h2>
-      <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <% if @minion.description.nil? %>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+      <% else %>
+        <p><%= @minion.description %></p>
+      <% end %>
     </div>
     <div class="col-4">
-    form
+      <%= simple_form_for @booking do  |t| %>
+        <%= t.input :minion_id, :as => :hidden, :input_html => { :value => @minion.id } %>
+        <%= t.input :start_date, as: :date %>
+        <%= t.input :end_date, as: :date%>
+        <%= t.submit "Book now", class: 'btn btn-primary' %>
+      <% end %>
     </div>
   </div>
 

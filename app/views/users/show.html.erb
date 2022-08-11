@@ -1,0 +1,17 @@
+<h1>Hello <strong><%= current_user.username %></strong></h1>
+<br>
+<br>
+<p>Email: <%= current_user.email %></p>
+<p>Full name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+<%= link_to "Edit profile", edit_user_registration_path(current_user) %>
+<div>
+  <h3>My minions:</h3>
+
+  <ul>
+    <% @owned_minions.each do |minion| %>
+      <% if policy(Minion).show? %>
+        <li> <%= link_to minion.name, minion_path(minion) %> </li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>

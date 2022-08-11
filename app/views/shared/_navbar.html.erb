@@ -1,34 +1,35 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css">
 
 <div class="container">
-<nav>
-  <ul>
-    <li>
-      <span class="icon_minion_flex">
-        <%= image_tag "minion.png", width: 40 %>
-        <span><%= link_to 'Airminions', root_path , class: 'logo'  %></span>
-      </span>
-    </li>
-    <li>
-    <form action="search" class="form_flex">
-      <input class='search_input' name="name" type="text" placeholder='what are you looking for?'>
-      <button><i class="fas fa-search"></i></button>
-    </form>
-    </li>
-    <% if user_signed_in? %>
+  <nav>
+    <ul>
       <li>
-        <div class="sign_in_nav">
-        <%= link_to "Log out",  destroy_user_session_path, method:  :delete%>
-        <%= link_to "Host a minion", new_minion_path %>
-        <%= link_to "My Bookings", bookings_path %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-        </div>
+        <%= render "shared/logo" %>
       </li>
-
-  </ul>
-    <% else %>
-    <li><%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %></li>
-    <% end %>
-</nav>
-
+      <li>
+      <form action="search" class="form_flex">
+        <input class='search_input' name="name" type="text" placeholder='what are you looking for?'>
+        <button><i class="fas fa-search"></i></button>
+      </form>
+      </li>
+      <% if user_signed_in? %>
+        <li>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li><%= link_to "Host a minion", new_minion_path, class: "dropdown-item" %></li>
+              <li><%= link_to "My Bookings", bookings_path, class: "dropdown-item"%></li>
+              <li><%= link_to "profile", user_path(current_user.id), class: "dropdown-item"%></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item"%></li>
+            </ul>
+          </div>
+        </li>
+    </ul>
+      <% else %>
+      <li><%= link_to "sign in", new_user_session_path %> or <%= link_to "sign up", new_user_registration_path %></li>
+      <% end %>
+  </nav>
 </div>
