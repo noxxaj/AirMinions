@@ -3,9 +3,11 @@
   <p><i class="fa-solid fa-star"></i> <span>(5.0) Review</span> - Skills: <b><%= @minion.skills %></b></p>
   <p>Owner: <b><%= @minion.user.username %></b></p>
   <div>
+  <% if current_user != nil %>
   <% if @minion.user_id === current_user.id %>
     <%= link_to 'Edit', edit_minion_path, class: 'btn-blue'%>
     <%= link_to 'Delete', minion_path(@minion), method: :delete, class: 'btn-red'%>
+  <% end %>
   <% end %>
   </div>
   <div class="images-container">
