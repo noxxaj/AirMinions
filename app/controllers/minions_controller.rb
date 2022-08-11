@@ -25,7 +25,9 @@ class MinionsController < ApplicationController
   end
 
   def search
-    @wanted_minion = Minion.where(name: params[:name]).first
+    @sql_query = "minions.name @@ :query"
+    @wanted_minion = Minion.where(@sql_query, query: "%#{params[:query]}%")
+    # @wanted_minion = Minion.where(name: params[:name]).first
     redirect_to minion_path(@wanted_minion)
     authorize @wanted_minion
   end
@@ -60,7 +62,8 @@ class MinionsController < ApplicationController
   private
 
   def set_minion
-    @minion = Minion.find(params[:id])
+    @sql_query = "minions.name @@ :query"
+    @minion = Minion.where(@sql_query, query: "%#{params[:query]}%")
   end
 
   def minion_params
