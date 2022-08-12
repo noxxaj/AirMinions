@@ -9,9 +9,9 @@ require 'faker'
 require "open-uri"
 
 puts 'Cleaning database 🧹'
-Booking.destroy_all
-Minion.destroy_all
 User.destroy_all
+# Booking.destroy_all
+# Minion.destroy_all
 puts 'Database clean ✨'
 
 User.create!(username: "fake_user123", email: "fake@gmail.com", password: "iloveminions")
