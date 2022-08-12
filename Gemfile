@@ -64,8 +64,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "pundit"
 gem 'devise'
 gem "geocoder"
-gem 'dotenv-rails', groups: [:development, :test]
-# gem 'pg_search', '~> 2.3.0'
-gem 'searchkick', '~> 4.0'
-
-# gem 'elasticsearch', "< 7.14"
+gem 'cloudinary', '~> 1.16.0'
+gem 'open-uri'
+gem 'pg_search', '~> 2.3.0'

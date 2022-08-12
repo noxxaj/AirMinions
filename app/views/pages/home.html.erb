@@ -12,7 +12,8 @@
   <div class="container card-container">
       <% @minions.take(3).each do |minion| %>
         <div class="card">
-          <img src='<%= minion.photo %>' alt="minion image">
+          <%= cl_image_tag("rwem4o6upgy6ojelic1w",
+                            width: 300, height: 300) %>
           <div class="card_text-container">
             <div class="d-flex justify-content-between">
               <p><strong><%= minion.name %></strong></p>

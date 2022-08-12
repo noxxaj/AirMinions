@@ -1,5 +1,10 @@
-.images-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+.images-container {
+  display: flex;
+  height: 500px;
+  width: 1200px;
+  margin: 10px;
+}
+
+.images-container img {
+  border-radius: 30px;
 }
