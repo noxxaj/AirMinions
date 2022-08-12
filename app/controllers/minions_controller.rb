@@ -3,13 +3,8 @@ class MinionsController < ApplicationController
   before_action :authenticate_user!, only: %i[edit update create]
 
   def index
-    if params[:name].present?
-      sql_query = " \
-        minions.name @@ :name \
-        OR minions.skills @@ :name \
-      "
-      # @minions = Minion.where(sql_query, query: "%#{params[:query]}%")
-      @minions = policy_scope(Minion.where(sql_query, name: "%#{params[:name]}%")).order(created_at: :asc)
+    if params[:query].present?
+      @minions = policy_scope(Minion.search_by_name_and_skills(params[:query])).order(created_at: :asc)
     else
       @minions = policy_scope(Minion).order(created_at: :asc)
     end
