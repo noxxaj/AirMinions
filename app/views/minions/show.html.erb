@@ -1,33 +1,30 @@
 <div class="container">
-
-  <div>
-    <h1>Hello from <b><%=@minion.name %></b>!</h1>
-    <p><i class="fa-solid fa-star"></i> <span>(5.0) Review</span> - Skills: <b><%= @minion.skills %></b></p>
-    <p>Owner: <b><%= @minion.user.username %></b></p>
-    <div class="edit-and-delete">
-      <% if current_user != nil %>
-        <% if @minion.user_id === current_user.id %>
-          <%= link_to 'Edit', edit_minion_path, class: 'btn-blue'%>
-          <%= link_to 'Delete', minion_path(@minion), method: :delete, class: 'btn-red'%>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
   <div class="row">
+    <div class="col-5">
+      <h1>Hello from <b><%=@minion.name %></b>!</h1>
+      <p><i class="fa-solid fa-star"></i> <span>(5.0) Review</span> - Skills: <b><%= @minion.skills %></b></p>
+      <p>Owner: <b><%= @minion.user.username %></b></p>
+      <div class="edit-and-delete">
+        <% if current_user != nil %>
+          <% if @minion.user_id === current_user.id %>
+            <%= link_to 'Edit', edit_minion_path, class: 'btn-blue'%>
+            <%= link_to 'Delete', minion_path(@minion), method: :delete, class: 'btn-red'%>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+      <div class="col-7">
+        <div class="pleasework">
+        <% raise %>
+          <img src="https://www.pngmart.com/files/12/Group-Minions-PNG-Photo.png" alt="minions" style="width:70%">
+          <div class="images-container">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQReA1iUrEWlfKzNJ4n0JsUjdjW8tDQA48NTw&usqp=CAU" alt="minions">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kMCoDNbUpGMqY0jYnBrbX_wrNNwJJwnxZA&usqp=CAU" alt="minions">
 
-
-          <div class="col-8">
-            <img src="https://www.pngmart.com/files/12/Group-Minions-PNG-Photo.png" alt="minions" style="width:100%; border-radius: 30px;">
-          <div>
-
-            <div class="col-4">
-                <%# <img src="<%= @minion.photo" alt="Minion photo"> %>
-                <div class="vertical-imgs">
-                  <img src="https://www.pngmart.com/files/12/Group-Minions-PNG-Photo.png" alt="minions" style="width:100%; border-radius: 30px;">
-                  <img src="https://www.pngmart.com/files/12/Group-Minions-PNG-Photo.png" alt="minions" style="width:100%; border-radius: 30px;">
-                </div>
-            </div>
-
+            <%# <img src="<%= @minion.photo" alt="Minion photo">  %>
+          </div>
+        </div>
+      </div>
   </div>
   <div class="row">
     <div class="col-8">
