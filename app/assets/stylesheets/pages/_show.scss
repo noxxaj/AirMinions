@@ -1,10 +1,17 @@
-.images-container {
-  display: flex;
-  height: 500px;
-  width: 1200px;
-  margin: 10px;
-}
+// .images-container {
+//   display: flex;
+//   gap: 10px
+// }
 
-.images-container img {
-  border-radius: 30px;
+// // .images-container img {
+// //   border-radius: 30px;
+// // }
+.vertical-imgs {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+#fookingflex{
+  display: flex;
+  gap: 10px
 }
