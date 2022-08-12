@@ -16,18 +16,19 @@ puts 'Database clean ✨'
 
 User.create!(username: "fake_user123", email: "fake@gmail.com", password: "iloveminions")
 User.create!(username: "minion_overlord", email: "notreal@gmail.com", password: "minionlover123")
+User.create!(username: "minion_fan", email: "fake1@gmail.com", password: "minionfan")
 
 names = ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'Ken', 'Lance', 'Larry', 'Mark', 'Mike',
   'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'Mel', 'Jorge', 'Donny']
-addresses = ['Piccadilly Circus', '11 Wall Street New York, NY', '221 B Baker St, London, England', 'Tour Eiffel Champ de Mars, Paris', 'Buckingham Palace, London, England']
+# addresses = ['Piccadilly Circus', '11 Wall Street New York, NY', '221 B Baker St, London, England', 'Tour Eiffel Champ de Mars, Paris', 'Buckingham Palace, London, England']
 
 names.each do |name|
   minion = Minion.new(
     name: name,
     skills: Faker::Games::Heroes.specialty,
-    user_id: User.first.id,
+    user_id: User.all.sample.id,
     price_per_day: rand(150..10_000),
-    address: 'Piccadilly Circus'
+    address: Faker::Address.full_address
   )
   file = URI.open("https://res.cloudinary.com/dqlkgz11b/image/upload/v1660241501/minions/#{name}.png")
   minion.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
@@ -72,11 +73,13 @@ end
 # end
 
 3.times do
+  minion = Minion.all.sample
+  users = User.where("id != ?", minion.user)
   booking = Booking.create!(
     start_date: Faker::Date.between(from: '2022-01-01', to: '2022-03-01'),
     end_date: Faker::Date.between(from: '2022-03-02', to: '2022-07-01'),
-    user_id: User.last.id,
-    minion_id: (Minion.first.id..Minion.last.id).to_a.sample
+    user_id: users.sample.id,
+    minion_id: minion.id
   )
   puts "Booking #{booking.id} created ✅"
 end
