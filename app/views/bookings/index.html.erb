@@ -15,8 +15,10 @@
       <% end %>
     <% end %>
   </div>
-  <h1 class="container-header">My Minions' bookings</h1>
-  <div class="card-container">
+  <br>
+  <br>
+  <h1 class="container-header mt-5">My Minions' bookings</h1>
+  <div class="card-container mb-5">
       <% @hosted_bookings.each do |booking| %>
         <% if policy(Booking).show? %>
             <div class="card-product">
@@ -32,4 +34,3 @@
       <% end %>
     </div>
 </div>
-gs
