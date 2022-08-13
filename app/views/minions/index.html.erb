@@ -7,12 +7,12 @@
           Filter <i class="fa-solid fa-sliders"></i> #placeholder
       </button> %>
      </div>
-     <div class="card-container-index">
+     <div class="card-container-index my-3">
         <% @minions.each do |minion| %>
           <% if policy(Minion).show? %>
           <div class="card">
               <% if minion.photo.attached?  %>
-                <img src="<%= cl_image_path minion.photo.key %>" alt="">
+                <%= cl_image_tag minion.photo.key, height: 300, width: 250, crop: :fill, class: "card-image" %>
                <% else %>
                 <img src='https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'  alt="">
                <% end %>
