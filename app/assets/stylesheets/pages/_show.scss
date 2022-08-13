@@ -6,7 +6,7 @@
 // // .images-container img {
 // //   border-radius: 30px;
 // // }
-.images-container {
+.vertical-img-flex {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -16,7 +16,7 @@
 //   display: flex;
 //   gap: 10px
 // }
-.pleasework{
+.horizontal-img-flex{
   display: flex;
   gap: 10px
 }

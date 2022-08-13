@@ -1,19 +1,22 @@
-<h1>Bookings</h1>
-<hr>
-<h3>My bookings</h3>
-<ul>
-  <% @bookings.each do |booking| %>
-    <% if policy(Booking).show? %>
-      <li> <%= link_to booking.start_date.to_s, booking_path(booking) %> </li>
+<div>
+  <h1>Bookings</h1>
+  <hr>
+  <h3>My bookings</h3>
+  <ul>
+    <% @bookings.each do |booking| %>
+      <% if policy(Booking).show? %>
+        <li> <%= link_to booking.start_date.to_s, booking_path(booking) %> </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
 
-<h3>My minions' bookings</h3>
-<ul>
-  <% @hosted_bookings.each do |booking| %>
-    <% if policy(Booking).show? %>
-      <li> <%= link_to booking.start_date.to_s, booking_path(booking) %> </li>
+  <h3>My minions' bookings</h3>
+  <ul>
+    <% @hosted_bookings.each do |booking| %>
+      <% if policy(Booking).show? %>
+        <li> <%= link_to booking.start_date.to_s, booking_path(booking) %> </li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+
+</div>
