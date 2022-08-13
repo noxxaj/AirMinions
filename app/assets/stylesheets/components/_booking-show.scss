@@ -1,0 +1,21 @@
+.booking-container {
+  padding: 100px;
+  max-width: 100vh;
+  width: 1200px;
+  display: flex;
+  margin: auto;
+}
+
+.decline-accept-booking {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.image-container img {
+  border-radius: 30px;
+}
+
+.image-container {
+  align-items: flex-end;
+}
