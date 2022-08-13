@@ -1,13 +1,19 @@
-<h1>Edit <%= @minion.name %></h1>
-<div class="form-inputs">
-  <%= simple_form_for @minion do |f| %>
-    <%= f.input :name, required: true, autofocus: true %>
-    <%= f.input :description, required: false %>
-    <%= f.input :skills, required: false %>
-    <%= f.input :price_per_day, required: true%>
-    <%= f.input :address, required: false%>
-  </div>
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-  <% end %>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-6">
+      <h1>Edit <%= @minion.name %></h1>
+      <div class="form-inputs">
+      <%= simple_form_for @minion do |f| %>
+        <%= f.input :name, required: true, autofocus: true %>
+        <%= f.input :description, required: false %>
+        <%= f.input :skills, required: false %>
+        <%= f.input :price_per_day, required: true%>
+        <%= f.input :address, required: false%>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Update", class: 'btn btn-blue' %>
+      </div>
+      <% end %>
+    </div>
+   </div>
+</div>
