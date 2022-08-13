@@ -14,8 +14,8 @@
       </div>
     </div>
       <div class="col-7">
-        <div class="images-container">
-          <img src="<%= @minion.photo %>" alt="Minion photo">
+        <div class="horizontal-img-flex">
+           <%= cl_image_tag("#{@minion.photo.key}", width: 300, height: 300) %>
         </div>
       </div>
   </div>
