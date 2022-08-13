@@ -5,6 +5,7 @@
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+
   a {
     text-decoration: none !important;
     border: none !important;
@@ -15,10 +16,10 @@
   }
 }
 
-
 .mapboxgl-map {
   position: sticky;
-  top: 20px
+  top: 20px;
+  height: 100vh;
 }
 
 .mapboxgl-ctrl-geocoder {
