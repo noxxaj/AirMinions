@@ -1,6 +1,10 @@
 <div class="container my-3">
   <h1 class="container-header">My Bookings</h1>
   <div class="card-container">
+  <% if Booking.count == 0 %>
+      <p>You have no booking yet!</p>
+      <%= link_to 'Find a minion now', minions_path, class: 'btn-blue ' %>
+  <% else %>
     <% @bookings.each do |booking| %>
       <% if policy(Booking).show? %>
           <div class="card-product">
@@ -14,23 +18,29 @@
         </div>
       <% end %>
     <% end %>
+  <% end %>
   </div>
   <br>
   <br>
   <h1 class="container-header mt-5">My Minions' bookings</h1>
   <div class="card-container mb-5">
-      <% @hosted_bookings.each do |booking| %>
-        <% if policy(Booking).show? %>
-            <div class="card-product">
-              <%= cl_image_tag booking.minion.photo.key, height: 300, width: 400, crop: :fill %>
-              <%= link_to booking_path(booking) do %>
-              <div class="card-product-infos">
-                <h2>Minion: <%= booking.minion.name %></h2>
-                <p>Date: <%= booking.start_date %> - <%= booking.end_date%></p>
-              </div>
-              <% end %>
-          </div>
+    <% if Booking.count == 0 %>
+      <p>You have no booking yet!</p>
+      <%= link_to 'Host your minion now', new_minion_path, class: 'btn-blue' %>
+    <% else %>
+        <% @hosted_bookings.each do |booking| %>
+          <% if policy(Booking).show? %>
+              <div class="card-product">
+                <%= cl_image_tag booking.minion.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= link_to booking_path(booking) do %>
+                <div class="card-product-infos">
+                  <h2>Minion: <%= booking.minion.name %></h2>
+                  <p>Date: <%= booking.start_date %> - <%= booking.end_date%></p>
+                </div>
+                <% end %>
+            </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
 </div>
