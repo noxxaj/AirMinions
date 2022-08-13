@@ -1,32 +1,33 @@
-<h1>Hello <strong><%= current_user.username %></strong></h1>
-<br>
-<br>
-<p>Email: <%= current_user.email %></p>
-<p>Full name: <%= current_user.first_name %> <%= current_user.last_name %></p>
-<%= link_to 'Edit profile', edit_user_registration_path(current_user), class: 'btn-blue'%>
-<div>
-  <h3>My minions:</h3>
+<div class="container">
+  <h1>Hello <strong><%= current_user.username %></strong>!</h1>
+  <br>
+  <br>
+  <p>Email: <%= current_user.email %></p>
+  <p>Full name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+  <%= link_to 'Edit profile', edit_user_registration_path(current_user), class: 'btn-blue'%>
+  <%= link_to 'My bookings', bookings_path, class: 'btn-blue'%>
+    <div>
+    <h3>My minions:</h3>
 
-  <div class="card-container-my-minions">
-        <% @owned_minions.each do |minion| %>
-          <% if policy(Minion).show? %>
-          <div class="card">
-              <% if minion.photo.attached?  %>
-                <img src="<%= cl_image_path minion.photo.key %>" alt="">
-               <% else %>
-                <img src='https://i.pinimg.com/736x/95/a1/95/95a195e665368324f79aeb0904e95d6d--happy-valentines-day-minions-quotes.jpg'  alt="">
-               <% end %>
-              <div class="card_text-container">
-                <div class="d-flex justify-content-between">
-                  <p><strong><%= minion.name %></strong></p>
-                  <p><i class="fa-solid fa-star"></i> 5.0</p>
-                </div>
-                <p>Skills: <%= minion.skills %></p>
-                <p><strong>€ <%= minion.price_per_day %></strong></p>
+  <% if @owned_minions.empty? %>
+    <p>You don't have any minions</p>
+    <%= link_to 'Host a minion', new_minion_path, class: 'btn-blue' %>
+  <% else %>
+    <div class="card-container-my-minions">
+          <% @owned_minions.each do |minion| %>
+            <% if policy(Minion).show? %>
+                <div class="card-product">
+                  <%= cl_image_tag minion.photo.key, height: 300, width: 400, crop: :fill %>
+                  <%= link_to minion_path(minion) do %>
+                  <div class="card-product-infos">
+                    <h2>Minion: <%= minion.name %></h2>
+                    <p>Skills: <%= minion.skills %></p>
+                  </div>
+                  <% end %>
               </div>
-              <%= link_to 'Find out more', minion_path(minion), class: 'btn btn-blue' %>
-            </div>
+            <% end %>
           <% end %>
-        <% end %>
       </div>
+    </div>
+  <% end %>
 </div>
