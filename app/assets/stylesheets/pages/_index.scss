@@ -14,6 +14,11 @@
   gap: 1em;
 }
 
+.card-container-my-minions {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1em;
+}
 .image-map {
   position: sticky;
   top: 20px;

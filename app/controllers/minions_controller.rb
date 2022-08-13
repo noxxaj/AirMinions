@@ -36,8 +36,12 @@ class MinionsController < ApplicationController
   end
 
   def update
-    @minion.update(minion_params)
-    redirect_to minion_path(@minion)
+    # raise
+    if @minion.update!(minion_params)
+      redirect_to minion_path(@minion)
+    else
+      render :edit
+    end
     authorize @minion
   end
 
