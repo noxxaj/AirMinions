@@ -19,8 +19,9 @@ User.create!(username: "minion_overlord", email: "notreal@gmail.com", password: 
 User.create!(username: "minion_fan", email: "fake1@gmail.com", password: "minionfan")
 
 names = ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'Ken', 'Lance', 'Larry', 'Mark', 'Mike',
-        'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'Mel', 'Jorge', 'Donny']
-# addresses = ['Piccadilly Circus', '11 Wall Street New York, NY', '221 B Baker St, London, England', 'Tour Eiffel Champ de Mars, Paris', 'Buckingham Palace, London, England']
+
+  'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'Mel', 'Jorge', 'Donny']
+addresses = ['Piccadilly Circus', '11 Wall Street New York, NY', '221 B Baker St, London, England', 'Tour Eiffel Champ de Mars, Paris', 'Buckingham Palace, London, England']
 
 names.each do |name|
   minion = Minion.new(
@@ -28,7 +29,7 @@ names.each do |name|
     skills: Faker::Games::Heroes.specialty,
     user_id: User.all.sample.id,
     price_per_day: rand(150..10_000),
-    address: "Eiffel Tower"
+    address: addresses.sample
   )
   file = URI.open("https://res.cloudinary.com/dqlkgz11b/image/upload/v1660241501/minions/#{name}.png")
   minion.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')

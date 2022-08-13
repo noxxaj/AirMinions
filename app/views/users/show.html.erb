@@ -1,17 +1,33 @@
-<h1>Hello <strong><%= current_user.username %></strong></h1>
-<br>
-<br>
-<p>Email: <%= current_user.email %></p>
-<p>Full name: <%= current_user.first_name %> <%= current_user.last_name %></p>
-<%= link_to "Edit profile", edit_user_registration_path(current_user) %>
-<div>
-  <h3>My minions:</h3>
+<div class="container">
+  <h1>Hello <strong><%= current_user.username %></strong>!</h1>
+  <br>
+  <br>
+  <p>Email: <%= current_user.email %></p>
+  <p>Full name: <%= current_user.first_name %> <%= current_user.last_name %></p>
+  <%= link_to 'Edit profile', edit_user_registration_path(current_user), class: 'btn-blue'%>
+  <%= link_to 'My bookings', bookings_path, class: 'btn-blue'%>
+    <div>
+    <h3>My minions:</h3>
 
-  <ul>
-    <% @owned_minions.each do |minion| %>
-      <% if policy(Minion).show? %>
-        <li> <%= link_to minion.name, minion_path(minion) %> </li>
-      <% end %>
-    <% end %>
-  </ul>
+  <% if @owned_minions.empty? %>
+    <p>You don't have any minions</p>
+    <%= link_to 'Host a minion', new_minion_path, class: 'btn-blue' %>
+  <% else %>
+    <div class="card-container-my-minions">
+          <% @owned_minions.each do |minion| %>
+            <% if policy(Minion).show? %>
+                <div class="card-product">
+                  <%= cl_image_tag minion.photo.key, height: 300, width: 400, crop: :fill %>
+                  <%= link_to minion_path(minion) do %>
+                  <div class="card-product-infos">
+                    <h2>Minion: <%= minion.name %></h2>
+                    <p>Skills: <%= minion.skills %></p>
+                  </div>
+                  <% end %>
+              </div>
+            <% end %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
 </div>
