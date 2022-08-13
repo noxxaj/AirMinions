@@ -15,13 +15,7 @@
     </div>
       <div class="col-7">
         <div class="horizontal-img-flex">
-          <img src="https://www.pngmart.com/files/12/Group-Minions-PNG-Photo.png" alt="minions" style="width:70%">
-          <div class="vertical-img-flex">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQReA1iUrEWlfKzNJ4n0JsUjdjW8tDQA48NTw&usqp=CAU" alt="minions">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_kMCoDNbUpGMqY0jYnBrbX_wrNNwJJwnxZA&usqp=CAU" alt="minions">
-
-            <%# <img src="<%= @minion.photo" alt="Minion photo">  %>
-          </div>
+           <%= cl_image_tag("#{@minion.photo.key}", width: 300, height: 300) %>
         </div>
       </div>
   </div>

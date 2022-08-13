@@ -6,19 +6,15 @@
 // // .images-container img {
 // //   border-radius: 30px;
 // // }
-.vertical-img-flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30%;
-}
+
 // #fookingflex{
 //   display: flex;
 //   gap: 10px
 // }
 .horizontal-img-flex{
   display: flex;
-  gap: 10px
+  // width: 80%;
+  justify-content: center;
 }
 .container{
   margin-bottom: 30px;
