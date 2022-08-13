@@ -13,13 +13,13 @@
       <% @minions.take(3).each do |minion| %>
         <div class="card">
           <%= cl_image_tag("#{minion.photo.key}",
-                            width: 300, height: 300) %>
+                            width: 250, height: 300, crop: :fill, class: "card-image") %>
           <div class="card_text-container">
             <div class="d-flex justify-content-between">
               <p><strong><%= minion.name %></strong></p>
               <p><i class="fa-solid fa-star"></i> 5.0</p>
             </div>
-            <p><%= minion.skills %></p>
+            <p>Skills: <%= minion.skills %></p>
             <p>17km away</p>
             <p><strong>€ <%= minion.price_per_day %></strong></p>
           </div>

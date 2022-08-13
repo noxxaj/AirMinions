@@ -1,21 +1,36 @@
-<h1><%=@booking.start_date%> to <%=@booking.end_date%></h1>
-<p>status: <b><%=@booking.status%></b></p>
-<p>Owner: <b><%= @booking.minion.user.username %></b></p>
-<% if @booking.minion.user_id == current_user.id && @booking.status === 'pending' %>
-  <p>requested by: <b><%=@booking.user.username%></b></p>
-    <%= simple_form_for @booking do  |t| %>
-      <%# <%= t.input :status, value: "Decline" %>
-      <%= t.input :status, input_html: {value: 'Decline', class: 'd-none'}, label: false %>
-      <%= t.submit "Decline", class: "btn btn-red" %>
-    <% end %>
-
-    <%= simple_form_for @booking do  |t| %>
-      <%= t.input :status, input_html: {value: 'Accept', class: 'd-none'}, label: false %>
-      <%= t.submit "Accept", class: "btn btn-blue" %>
-    <% end %>
-
-<% else %>
-  <p>hosted by: <b><%=@booking.user.username%></b></p>
-<% end %>
-<p>minion: <b><%=@booking.minion.name%></b></p>
-<img src=<%=@booking.minion.photo%>
+<div class="booking-container">
+  <div class="row">
+    <div class="col-8">
+      <% if @booking.minion.user_id == current_user.id && @booking.status === 'pending' %>
+        <h1>Booking request for <b><%= @booking.minion.name %></b></h1>
+        <br>
+        <p>Status: <b><%= @booking.status %></b></p>
+        <p>Requested by: <b><%= @booking.user.username %></b></p>
+        <p>Start date: <b><%= @booking.start_date %></b></p>
+        <p>End date: <b><%= @booking.end_date %></b></p>
+        <div class="decline-accept-booking">
+          <%= simple_form_for @booking do  |t| %>
+            <%= t.input :status, input_html: {value: 'Decline', class: 'd-none'}, label: false %>
+            <%= t.submit "Decline", class: "btn btn-red" %>
+          <% end %>
+          <%= simple_form_for @booking do  |t| %>
+            <%= t.input :status, input_html: {value: 'Accept', class: 'd-none'}, label: false %>
+            <%= t.submit "Accept", class: "btn btn-blue" %>
+          <% end %>
+        </div>
+      <% else %>
+        <h1>Your booking request for <b><%= @booking.minion.name %></b></h1>
+        <br>
+        <p>Status: <b><%= @booking.status %></b></p>
+        <p>Owner: <b><%= @booking.minion.user.username %></b></p>
+        <p>Start date: <b><%= @booking.start_date %></b></p>
+        <p>End date: <b><%= @booking.end_date %></b></p>
+      <% end %>
+    </div>
+    <div class="col-4">
+      <div class="image-container">
+        <%= cl_image_tag @booking.minion.photo.key, height: 300, width: 250, crop: :fill %>
+      </div>
+    </div>
+  </div>
+</div>

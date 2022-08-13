@@ -1,10 +1,21 @@
-.images-container {
-  display: flex;
-  height: 500px;
-  width: 1200px;
-  margin: 10px;
-}
+// .images-container {
+//   display: flex;
+//   gap: 10px
+// }
 
-.images-container img {
-  border-radius: 30px;
+// // .images-container img {
+// //   border-radius: 30px;
+// // }
+
+// #fookingflex{
+//   display: flex;
+//   gap: 10px
+// }
+.horizontal-img-flex{
+  display: flex;
+  // width: 80%;
+  justify-content: center;
+}
+.container{
+  margin-bottom: 30px;
 }

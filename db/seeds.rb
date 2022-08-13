@@ -19,6 +19,7 @@ User.create!(username: "minion_overlord", email: "notreal@gmail.com", password: 
 User.create!(username: "minion_fan", email: "fake1@gmail.com", password: "minionfan")
 
 names = ['Bob', 'Carl', 'Darwin', 'Dave', 'Frank', 'Jerry', 'John', 'Kevin', 'Ken', 'Lance', 'Larry', 'Mark', 'Mike',
+
   'Norbert', 'Paul', 'Phil', 'Steve', 'Stuart', 'Tim', 'Tom', 'Chris', 'Mel', 'Jorge', 'Donny']
 addresses = ['Piccadilly Circus', '11 Wall Street New York, NY', '221 B Baker St, London, England', 'Tour Eiffel Champ de Mars, Paris', 'Buckingham Palace, London, England']
 
