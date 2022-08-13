@@ -28,7 +28,7 @@ names.each do |name|
     skills: Faker::Games::Heroes.specialty,
     user_id: User.all.sample.id,
     price_per_day: rand(150..10_000),
-    address: Faker::Address.full_address
+    address: "Eiffel Tower"
   )
   file = URI.open("https://res.cloudinary.com/dqlkgz11b/image/upload/v1660241501/minions/#{name}.png")
   minion.photo.attach(io: file, filename: 'nes.png', content_type: 'image/png')
