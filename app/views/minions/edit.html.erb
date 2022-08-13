@@ -1,6 +1,6 @@
 <h1>Edit <%= @minion.name %></h1>
 <div class="form-inputs">
-  <%= simple_form_for @minion do |f| %>
+  <%= simple_form_for @minion, data: { turbolinks: false } do |f| %>
     <%= f.input :name, required: true, autofocus: true %>
     <%= f.input :description, required: false %>
     <%= f.input :skills, required: false %>
